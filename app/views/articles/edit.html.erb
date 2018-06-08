@@ -1,12 +1,11 @@
-<h1>New Article</h1>
+<h1>Edit article</h1>
 
 <!--
-passing @article into the scope argument will automatically generate the fields
-associated with Articles. The url argument tells the form to send the request
-to the root articles path (/articles) as a POST request, which corresponds
-to the #create method in the controller. 
+passing @article into the model argument will autofill the form with the
+active model's information, and tell the form to perform a PATCH request for
+this particular model.
 -->
-<%= form_with scope: :article, url: articles_path, local: true do |form| %>
+<%= form_with(model: @article, local: true) do |form| %>
 
   <% if @article.errors.any? %>
     <div id="error_explanation">
@@ -33,6 +32,7 @@ to the #create method in the controller.
   <p>
     <%= form.submit %>
   </p>
+
 <% end %>
 
 <%= link_to 'Back', articles_path %>
